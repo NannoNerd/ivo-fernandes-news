@@ -10,39 +10,32 @@ import heroImage from '@/assets/hero-engineering-bg.jpg';
 const engineeringCategories = [
   {
     icon: Wrench,
-    title: 'AutoCAD Civil 3D',
-    description: 'Comandos automatizados para modelagem de terrenos, redes e infraestrutura',
-    color: 'text-orange-400'
-  },
-  {
-    icon: Building2,
-    title: 'Análise Estrutural',
-    description: 'Scripts para cálculos de vigas, pilares e fundações',
-    color: 'text-blue-400'
+    title: 'Introdução no Autocad Civil 3D',
+    description: 'Comandos mais usados, escalas, layers e estilos para começar no Civil 3D',
+    color: 'text-orange-400',
+    subtopics: [
+      'Comandos mais usados no Civil3D/Cad',
+      'Tamanho de textos, Labels, qual a melhor escala',
+      'Layers, cores, estilos. Como criar e editar'
+    ]
   },
   {
     icon: Globe,
-    title: 'Geotecnia',
-    description: 'Comandos para análise de solo e estabilidade de taludes',
-    color: 'text-green-400'
+    title: 'Topografia no Civil 3D',
+    description: 'Importação, criação e edição de topografias e grupos de pontos',
+    color: 'text-green-400',
+    subtopics: [
+      'Entendendo os formatos e Importando Topografia no Civil 3D',
+      'Criando e editando grupo de pontos',
+      'Convertendo levantamentos para o Civil3D - Data Extraction'
+    ]
   },
   {
-    icon: Droplets,
-    title: 'Hidráulica',
-    description: 'Cálculos automáticos de redes de água e esgoto',
-    color: 'text-cyan-400'
-  },
-  {
-    icon: Truck,
-    title: 'Pavimentação',
-    description: 'Dimensionamento automático de pavimentos flexíveis e rígidos',
-    color: 'text-gray-400'
-  },
-  {
-    icon: Calculator,
-    title: 'Orçamentação',
-    description: 'Geração automática de planilhas e composições de custos',
-    color: 'text-yellow-400'
+    icon: Building2,
+    title: 'Desenhando levantamento Topografico',
+    description: 'Técnicas e métodos para desenhar levantamentos topográficos',
+    color: 'text-blue-400',
+    subtopics: []
   }
 ];
 
@@ -114,6 +107,18 @@ export default function Engineering() {
                       {category.description}
                     </CardDescription>
                   </CardHeader>
+                  {category.subtopics && category.subtopics.length > 0 && (
+                    <CardContent>
+                      <ul className="space-y-2 text-sm text-muted-foreground">
+                        {category.subtopics.map((subtopic, subIndex) => (
+                          <li key={subIndex} className="flex items-start">
+                            <span className="text-primary mr-2">•</span>
+                            {subtopic}
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  )}
                 </Card>
               );
             })}
